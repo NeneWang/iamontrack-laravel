@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Image;
 use App\Userdatum;
+use App\Objective;
 
 use Illuminate\Http\Request;
 
@@ -44,6 +45,22 @@ class apiController extends Controller
         $lastUpdate = Carbon::parse($userDatum->last_update);
         $response = json_encode(array("days-left"=> $lastUpdate->diffInDays($currentTime)));
         return response($lastUpdate->diffInDays($currentTime), 200);
+    }
+
+    public function postObjective(REQUEST $request){
+        $task = Objective::insert([
+            'user_id'=> 1,
+            'title'=> $request->title,
+            ]);
+            return DB::getPdo()->lastInsertId();
+    }
+
+    public function getObjectivesNames(){
+        $objectives = Objective::get();
+        $mappedobjectives = $objectives->map(function($item, $key){
+            return $item->title;
+        });
+        return response(json_encode($mappedobjectives), 200);
     }
 
 

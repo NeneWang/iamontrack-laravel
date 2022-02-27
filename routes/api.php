@@ -26,4 +26,7 @@ Route::post('post-user-datum', [ApiController::class, 'postUserDatum']);
 Route::get('get-current-streak', [ApiController::class, 'getCurrentStreak']);
 Route::get('get-days-left', [ApiController::class, 'getDaysLeft']);
 
+Route::get('get-objectives-names', [ApiController::class, 'getObjectivesNames']);
+Route::post('post-objective', [ApiController::class, 'postObjective']);
+
 
