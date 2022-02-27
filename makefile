@@ -36,7 +36,7 @@ cap:
 # If the workflow is not working for some reason
 merp:
 	git checkout ${DEPLOY_BRANCH}
-	git pull
+	# git pull
 	git merge ${THIS_BRANCH}
 	make ft-configpush
 	git push origin HEAD
