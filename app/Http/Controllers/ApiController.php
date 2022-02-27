@@ -24,7 +24,7 @@ class apiController extends Controller
     }
 
     public function postUserDatum(REQUEST $request){
-        $userDatum = new UserDatum();
+        $userDatum = Userdatum::first();
         $userDatum->$last_update=$request->lastupdate;
         $userDatum->$current_streak=$request->currentstreak;
         $userDatum->save();
