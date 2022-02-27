@@ -33,7 +33,7 @@ class apiController extends Controller
     public function getCurrentStreak(){
         $userDatum = Userdatum::first();
         $response = json_encode(array("current-streak"=> $userDatum->current_streak));
-        return response($response, 200);
+        return response($userDatum->current_streak, 200);
     }
 
     public function getDaysLeft(){
@@ -41,7 +41,7 @@ class apiController extends Controller
         $currentTime = Carbon::now();
         $lastUpdate = Carbon::parse($userDatum->last_update);
         $response = json_encode(array("days-left"=> $lastUpdate->diffInDays($currentTime)));
-        return response($response, 200);
+        return response($lastUpdate->diffInDays($currentTime), 200);
     }
 
 
