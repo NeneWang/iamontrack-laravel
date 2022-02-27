@@ -24,9 +24,9 @@ class apiController extends Controller
     }
 
     public function postUserDatum(REQUEST $request){
-        $userDatum = Userdatum::first()
-        $userDatum->$last_update=$request->lastupdate;
-        $userDatum->$current_streak=$request->currentstreak;
+        $userDatum = Userdatum::first();
+        $userDatum->last_update=$request->lastupdate;
+        $userDatum->current_streak=$request->currentstreak;
         $userDatum->save();
         // DB::table('userdata')->insert(['image'=> $image,]);
 
