@@ -22,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('create-video', [ApiController::class, 'createVideo'])
 Route::post('upload-image', [ApiController::class, 'uploadImage']);
 
+Route::post('post-user-datum', [ApiController::class, 'postUserDatum']);
+Route::get('get-current-streak', [ApiController::class, 'getCurrentStreak']);
+// Route::get('get-days-left', [ApiController::class, 'getDaysLeft']);
+
 
