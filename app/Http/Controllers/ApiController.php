@@ -45,16 +45,20 @@ class apiController extends Controller
         return response($lastUpdate->diffInDays($currentTime), 200);
     }
 
-    public function postObjective(REQUQEST $request){
-        Objective::insert([
-            'user_id': 1,
-            'title': $request.title,
-        ])
+    public function postObjective(REQUEST $request){
+        $task = Objective::insert([
+            'user_id'=> 1,
+            'title'=> $request->title,
+            ]);
+            return DB::getPdo()->lastInsertId();
     }
 
-    public function getObjectives(){
+    public function getObjectivesNames(){
         $objectives = Objective::get();
-        
+        $mappedobjectives = $objectives->map(function($item, $key){
+            return $item->title;
+        });
+        return response(json_encode($mappedobjectives), 200);
     }
 
 
